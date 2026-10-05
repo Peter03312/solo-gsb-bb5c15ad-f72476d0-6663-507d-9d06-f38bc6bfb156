@@ -1,0 +1,16 @@
+services:
+  water-isolation:
+    build: .
+    image: water-isolation-service
+    container_name: water-isolation-service
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /data/network.db
+      PORT: "8000"
+    volumes:
+      - water_data:/data
+    restart: unless-stopped
+
+volumes:
+  water_data:
